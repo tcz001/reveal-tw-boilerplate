@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Why STRIKE choose Golang?</title>
+        <title>about DNS</title>
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -39,203 +39,136 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
             <div class="slides">
                 <section>
                     <section>
-                        <h1 class="title">Why STRIKE chose Golang?</h1>
-                        <h4 class="subtitle">or did we?</h4>
+                        <h1 class="title">about DNS</h1>
+                        <h4 class="subtitle">as far as I know</h4>
                         <p>
                         <small>Created by <a href="http://blog.torchz.net">Fan</a></small>
                         </p>
                     </section>
 
                     <section class="bg-lightgray darkgray">
-                        <h2 class="pink">Why STRIKE chose Golang?</h2>
-                        <p class="grey">Popular?</p>
-                        <p class="grey">Easy to be Famous?</p>
-                        <p class="grey">Looks Cool?</p>
-                        <p class="grey">More Stars?</p>
+                        <h2 class="pink">about DNS definition</h2>
+                        <p class="grey">Domain</p>
+                        <p class="grey">Name</p>
+                        <p class="grey">System</p>
                         <p class="grey">...</p>
                     </section>
 
                     <section class="bg-lightgray darkgray">
-                        <h2 class="pink">Why STRIKE chose Golang?</h2>
-                        <p class="pink">Popular</p>
-                        <p class="pink">Easy to be Famous</p>
-                        <p class="pink">Looks Cool</p>
-                        <p class="pink">More Stars</p>
-                        <p class="green">Yes! Let's use JavaScript!</p>
+                        <h2 class="pink">about DNS Records</h2>
+                        <p class="pink">SOA</p>
+                        <p class="pink">NS</p>
+                        <p class="pink">A/AAAA/CNAME</p>
+                        <p class="pink">PTR</p>
+                        <p class="pink">SRV/MX</p>
+                        <p class="pink">NAPTR</p>
+                        <p class="black">DNSSEC</p>
+                        <p class="green">OK! Let's dig inside!</p>
                     </section>
 
                     <section class="bg-lightgray darkgray">
-                        <h2 class="pink">Why STRIKE chose Golang?</h2>
-                        <p class="pink">Nice Community</p>
-                        <p class="pink">Growing Acceptance</p>
-                        <p class="pink">Simple Syntax</p>
-                        <p class="pink">Killer Projects</p>
-                        <p class="green">Yes! Let's use Golang!</p>
+                        <h2 class="pink">about DNS Zone</h2>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+                                    <td>ttl</td>
+                                    <td>record class</td>
+                                    <td>record type</td>
+                                    <td>record data</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section class="bg-lightgray darkgray">
+                        <h2 class="pink">a Zone file</h2>
+                        <pre style="width:50em">
+$ORIGIN coy.im.     ; designates the start of this zone file in the namespace
+$TTL 1h                  ; default expiration time of all resource records without their own TTL value
+coy.im.  IN  SOA   ns.coy.im. username.coy.im. ( 2007120710 1d 2h 4w 1h )
+coy.im.  IN  NS    ns                    ; ns.coy.im is a nameserver for coy.im
+coy.im.  IN  NS    ns.somewhere.example. ; ns.somewhere.example is a backup nameserver for coy.im
+coy.im.  IN  MX    10 mail.coy.im.  ; mail.coy.im is the mailserver for coy.im
+@             IN  MX    20 mail2.coy.im. ; equivalent to above line, "@" represents zone origin
+@             IN  MX    50 mail3              ; equivalent to above line, but using a relative host name
+coy.im.  IN  A     192.0.2.1             ; IPv4 address for coy.im
+              IN  AAAA  2001:db8:10::1        ; IPv6 address for coy.im
+ns            IN  A     192.0.2.2             ; IPv4 address for ns.coy.im
+              IN  AAAA  2001:db8:10::2        ; IPv6 address for ns.coy.im
+www           IN  CNAME coy.im.          ; www.coy.im is an alias for coy.im
+wwwtest       IN  CNAME www                   ; wwwtest.coy.im is another alias for www.coy.im
+mail          IN  A     192.0.2.3             ; IPv4 address for mail.coy.im
+mail2         IN  A     192.0.2.4             ; IPv4 address for mail2.coy.im
+mail3         IN  A     192.0.2.5             ; IPv4 address for mail3.coy.im
+                        </pre>
+                    </section>
+
+                    <section class="bg-lightgray darkgray">
+                        <h2 class="pink">DNS RFCs</h2>
+                        <p class="pink">RFC 882 -> RFC 1034</p>
+                        <p class="pink">RFC 883 -> RFC 1035</p>
+                        <p class="pink">RFC 3596 AAAA</p>
+                        <p class="pink">RFC 2782 SRV</p>
+                        <p class="black">RFC 3225</p>
+                        <p>indicating Resolver Support of DNSSEC</p>
+                        <p class="black">RFC 4033</p>
+                        <p>DNS Security Introduction and Requirements</p>
                     </section>
                 </section>
 
                 <section>
                     <section class="bg-lightgray darkgray">
-                        <h2 class="pink">no offence</h2>
+                        <h2 class="pink">about security</h2>
                         <p class="emphasize">
-                        "Go is an <span class="pink">open source</span> programming language that makes it easy to build <span class="pink">simple</span>, <span class="pink">reliable</span>, and <span class="pink">efficient</span> software."
-                        -- Golang(6 years old just now)
+                        DNS spoofing (or DNS cache poisoning)
                         </p>
-                    </section>
-                    <section class="bg-lightgray darkgray">
-                        <h2 class="pink">no offence</h2>
-                        <p class="emphasize">
-                        "Go is an <span class="pink">free but not free</span> programming language that makes it easy to build <span class="pink">crude</span>, <span class="pink">conservative</span>, and <span class="pink">out of control</span> software."
-                        -- Fan(25 years old just now)
-                        </p>
-                    </section>
-                </section>
-
-                <section>
-                    <section class="bg-pink lightgray">
-                        <h2 class="lightgray">A bite of gopher</h2>
-                        <img src="./img/Everybody_has_one_I_need_one.gif">
-                    </section>
-
-                    <section class="bg-pink lightgray">
-                        <h2 class="lightgray">A bite of gopher</h2>
-                        <h4 class="subtitle" > AES Lib - <span class="blue">twstrike/AwESome</span></h4>
-                        <p class="emphasize">AES 128/192/256 bits</p>
-                        <p >Block mode:</p>
-                        <p class="emphasize">ECB/CBC</p>
-                        <p class="emphasize">CTR/PKCS5</p>
-                    </section>
-
-                    <section class="bg-pink lightgray">
-                        <h2 class="lightgray">A bite of gopher</h2>
-                        <h4 class="subtitle"> AES Lib - <span class="blue">twstrike/AwESome</span></h4>
-                        <p>We spent 2 weeks implementing AES as a playground for cryptography tool, and it works like a <span class="blue">productive</span> tool while we were all <span class="blue">fresh hands</span> doing this in golang.</p>
-                    </section>
-
-                    <section class="bg-pink lightgray">
-                        <h2 class="lightgray">A bite of gopher</h2>
-                        <h4 class="subtitle"> AES Lib - <span class="blue">twstrike/AwESome</span></h4>
-                        <p class="emphasize">Memory safe</p>
-                        <p class="emphasize">Bytes</p>
-                        <p class="emphasize">Standalone Binary</p>
-                    </section>
-                </section>
-
-                <section>
-                    <section class="bg-blue lightgray">
-                        <h2 class="lightgray">More fun</h2>
-                        <img src="./img/threegopher.png">
-                    </section>
-
-                    <section class="bg-blue lightgray">
-                        <h2 class="lightgray">More fun</h2>
-                        <h4 class="subtitle" > Off-the-Record Lib - <span class="pink">twstrike/otr3</span></h4>
                         <p>
-                        <span class="pink">OTR</span> is a secure layer protocol of instant message, it's more than TLS/SSL for TCP transportation.
+                        Attack whereby data is introduced into a Domain Name System (DNS) resolver's <span class="pink">cache</span>, causing the name server to return an incorrect IP address, diverting traffic to the attacker's computer <span class="pink">(or any other computer)</span>.
+                        </p>
+                        <p class="pink">A story about github DDOS.</p>
+                    </section>
+                    <section class="bg-lightgray darkgray">
+                        <h2 class="pink">about security</h2>
+                        <p class="emphasize">
+                        IDN homograph attack
+                        </p>
+                        <p>
+                        The <span class="pink">internationalized domain name</span> (IDN) homograph attack, by exploiting the fact that many different characters look alike, (i.e., they are <span class="pink">homographs</span>, hence the term for the attack)
+                        </p>
+                        <p>
+                        similar-looking characters such as Greek <span class="pink">Ο</span>, Latin <span class="pink">O</span>, and Cyrillic <span class="pink">О</span> were not assigned the same code
+                        </p>
+                        <p class="pink">That's why Punycode exists.</p>
+                    </section>
+                    <section class="bg-lightgray darkgray">
+                        <h2 class="pink">about DNSSEC</h2>
+                        <p class="emphasize">
+                        Domain Name System Security Extensions
+                        </p>
+                        <p>
+                        The <span class="pink">experimental</span> Extensions of <span class="pink">IETF DNS</span> for origin authentication of DNS data, authenticated denial of existence, and data integrity.
+                        </p>
+                        <p>
+                        DNSSEC does not provide confidentiality of data; in particular, all DNSSEC responses are <span class="pink">authenticated</span> but not <span class="pink">encrypted</span>
                         </p>
                     </section>
-
-                    <section class="bg-blue lightgray">
-                        <h2 class="lightgray">More fun</h2>
-                        <h4 class="subtitle" > Off-the-Record Lib - <span class="pink">twstrike/otr3</span></h4>
-                        <pre><code>
-    type foo struct {
-        bs []byte
-    }
-
-    func zeroes(n int) []byte {
-        return make([]byte, n)
-    }
-
-    func wipeBytes(b []byte) {
-        copy(b, zeroes(len(b)))
-    }
-
-
-    func main() {
-        a := foo{bs: []byte{0x01, 0x02}}
-        b := a.bs
-        wipeBytes(b)
-        fmt.Println(b)    //b == []byte{}
-        fmt.Println(a.bs) //a.bs == []byte{}
-    }
-                        </code></pre>
-                        <p class="emphasize">no copy abuse</p>
-                    </section>
-
-                    <section class="bg-blue lightgray">
-                        <h2 class="lightgray">More fun</h2>
-                        <h4 class="subtitle" > Off-the-Record Lib - <span class="pink">twstrike/otr3</span></h4>
-                        <pre><code>
-    type foo struct {
-        a []byte
-        B []byte
-    }
-
-    type Bar struct {
-        c []byte
-        D []byte
-    }
-                        </code></pre>
-                        <p class="emphasize">no public abuse</p>
-                    </section>
-                </section>
-
-                <section>
-                    <section>
-                        <h2><span class="darkgray">Much</span> More <span class="darkgray">Fun</span></h2>	
-                        <img src="./img/dancinggopher.gif">
-                    </section>
-
-                    <section class="bg-lightgray">
-                        <h2 class="darkgray">Deliver a <span class="pink">IM</span> application</h2>
-                        <p class="emphasize pink">Easy for mass</p>
-                        <p class="emphasize pink">Safe by default for sensitives</p>
-                        <p class="emphasize pink">OTR and TOR for us</p>
-                    </section>
-
-                    <section class="bg-lightgray">
-                        <img src="./img/coyim.png">
-                        <h2 class="darkgray">Coy<span class="pink">IM</span></h2>
-                    </section>
-
-                    <section class="bg-lightgray">
-                        <h2 class="darkgray">GUI toolkit for <span class="green">golang</span>?</h2>
-                        <h4 class="subtitle darkgray"><span class="pink">gotk3</span></h4>
-                    </section>
-
-                    <section class="bg-lightgray">
-                        <h2 class="darkgray">Bullets we have in <span class="green">golang</span>?</h2>
-                        <ul>
-                            <li class="darkgray">Standalone binary <span class="pink">bundle</span></li>
-                            <li class="darkgray">Decent concurrency/event-driven pattern using <span class="pink">goroutine & channel</span></li>
-                            <li class="darkgray">...</li>
-                        </ul>
-                    </section>
-
-                    <section class="bg-lightgray">
-                        <h2 class="darkgray">By the way, don't be surprised <span class="green">when</span> you see</h2>
-                        <ul>
-                            <li class="darkgray">There's <span class="pink">no type inheritance</span></li>
-                            <li class="darkgray">There's <span class="pink">no overloading</span></li>
-                            <li class="darkgray">There's <span class="pink">no macro</span></li>
-                            <li class="darkgray">Map dosen't support <span class="pink">slice as key</span></li>
-                            <li class="darkgray">...</li>
-                        </ul>
+                    <section class="bg-lightgray darkgray">
+                        <h2 class="pink">not about DNSSEC</h2>
+                        <p class="emphasize">
+                        Other Choices
+                        </p>
+                        <p>
+                        <span class="pink">DNSCurve</span>, has been proposed as an alternative to DNSSEC.
+                        </p>
+                        <p>
+                        <span class="pink">TSIG</span>, add support for cryptographic authentication between trusted peers and are commonly used to authorize zone transfer or dynamic update operations.
+                        </p>
                     </section>
                 </section>
 
                 <section style="text-align: left;" class="bg-white">
-                    <img src="./img/fiveyears.jpg">
-                </section>
-
-                <section style="text-align: left;" class="bg-white">
-                    <h1>PET night</h1>
-                    <h3>Privacy Enhancement Tools</h3>
-                </section>
-
-                <section style="text-align: left;" class="bg-white">
-                    <h1>Obrigado</h1>
+                    <h1>No Q&A</h1>
                     <img src="tw-logo.png" style="border: none; background-color: transparent; box-shadow: none;">
                 </section>
 
